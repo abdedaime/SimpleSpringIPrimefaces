@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+
+</h:head>
+<h:body>
+
+<p:messages id="messages"/>
+	<h:form>
+		<p:growl id="msgs" showDetail="true" />
+
+		<p:panel id="toggleable" header="Form" toggleable="true"
+			closable="true" toggleSpeed="500" closeSpeed="500" widgetVar="panel"
+			style="margin-bottom:20px">
+
+			<h:panelGrid columns="3">
+				<p:outputLabel value="Designation" />
+
+
+				<p:inputText   id="name" value="#{managedBeanProduit.pr.name}"  required="true"  requiredMessage="Prix:Vous devez indiquer une valeur"
+					validatorMessage="Min 3 max 6">
+					<f:validateLength minimum="3" maximum="6" />
+
+				</p:inputText>
+				
+				            <p:message for="name" display="icon" />
+				<p:outputLabel value="Prix" />
+
+				<p:inputText id="prix" value="#{managedBeanProduit.pr.prix}" required="true"  requiredMessage="Name:Vous devez indiquer une valeur"
+	>
+					<f:validateDoubleRange minimum="10.00"/>
+					</p:inputText>
+									<p:message for="prix" display="icon" />
+				
+     <p:commandButton  value="Submit" ajax="false"   action="#{managedBeanProduit.action}"  update="messages"/>
+
+			</h:panelGrid>
+
+
+
+			<p:ajax event="close" listener="#{panelView.onClose}" update="msgs" />
+			<p:ajax event="toggle" listener="#{panelView.onToggle}" update="msgs" />
+
+		</p:panel>
+
+	</h:form>
+	
+	<p:dataTable var="pr" value="#{managedBeanProduit.produits}">
+    <p:column headerText="Id">
+        <h:outputText value="#{pr.id}" />
+    </p:column>
+ 
+    <p:column headerText="Name">
+        <h:outputText value="#{pr.name}" />
+    </p:column>
+ 
+    <p:column headerText="Prix">
+        <h:outputText value="#{pr.prix}" />
+    </p:column>
+ 
+    
+</p:dataTable>
+</h:body>
+</html>

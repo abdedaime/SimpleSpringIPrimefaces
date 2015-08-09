@@ -1,0 +1,13 @@
+
+la doc spring
+
+http://docs.spring.io/spring/docs/current/spring-framework-reference/htmlsingle/
+
+les dependance spring 
+spring.io/blog/2009/12/02/obtaining-spring-3-artifacts-with-maven/
+
+ spring data jpa
+
+https://github.com/pkainulainen/spring-data-jpa-examples/tree/master/query-methods/src/main/resources
+
+
